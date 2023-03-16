@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+package mobile_device;
+
+
+
+service MobileService {
+  rpc GetMobileDevice(MobileDevice) returns (DeviceListAll) {}
+  rpc Create(CreateRequest) returns (MobileDevice) {}
+  rpc Update(UpdateRequest) returns (MobileDevice) {}
+  rpc Delete(QueryById) returns (SuccessMessage) {}
+  rpc FindById (QueryById) returns (MobileDevice) {};
+
+}
+
+message SuccessMessage {
+  string message = 1;
+}
+
+message QueryById {
+  int32 id = 1;
+}
+
+message UpdateRequest {
+  int32 id = 1;
+  CreateDeviceData data = 2;
+}
+
+message MobileDevice {
+  int32 id = 1;
+  string device_id = 2;
+  string name = 3;
+  string os_version = 4;
+  string customer_name = 5;
+}
+message DeviceListAll {
+  repeated MobileDevice data = 1;
+}
+
+message CreateDeviceData {
+  string device_id = 1;
+  string name = 2;
+  string os_version = 3;
+  string customer_name = 4;
+}
+
+message CreateRequest {
+  CreateDeviceData data = 1;
+}
