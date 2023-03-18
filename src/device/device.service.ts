@@ -95,10 +95,10 @@ export class MobileDeviceService {
     await queryRunner.startTransaction();
     try {
       const responseData = this.repo.create({
-        device_id: data.data.device_id ?? '233',
-        name:data.data.name ?? 'test',
-        os_version:data.data.os_version ?? 'test',
-        customer_name: data.data.customer_name ?? 'mahesh',
+        device_id: data.data.device_id ,
+        name:data.data.name,
+        os_version:data.data.os_version ,
+        customer_name: data.data.customer_name,
       });
       await queryRunner.manager.save(responseData);
       await queryRunner.commitTransaction();
